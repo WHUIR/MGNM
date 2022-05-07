@@ -1,0 +1,5 @@
+tensorflow-gpu==1.14
+elasticseach
+tensorboardX
+tqdm
+sklearn

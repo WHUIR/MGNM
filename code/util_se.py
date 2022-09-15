@@ -313,7 +313,7 @@ def _create_gcn_emb(A, x, num_layer, embedding_dim, se_num, batch_size, seq_len,
     all_embeddings = [tf.slice(x, [0, se_num, 0], [batch_size, seq_len, embedding_dim])]
     for k in range(num_layer):
         embeddings = tf.matmul(A, x)
-        embeddings = tf.nn.leaky_relu(tf.matmul(embeddings, all_weights['W_gc%d' % 0]) + all_weights['B_gc%d' % 0])
+        embeddings = tf.nn.leaky_relu(tf.matmul(embeddings, all_weights['W_gc%d' % k]) + all_weights['B_gc%d' % k])
         all_embeddings.append(tf.slice(embeddings, [0, se_num, 0], [batch_size, seq_len, embedding_dim]))
 
     return all_embeddings
